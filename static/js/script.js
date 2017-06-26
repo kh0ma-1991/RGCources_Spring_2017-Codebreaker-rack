@@ -66,21 +66,27 @@ var set_attempts = function(attempts_var){
 
 var check_guess = function () {
     var guess = $('#guess').val();
-    $.ajax({
-        type: "GET",
-        dataType: "json",
-        url: '/check',
-        data: {guess: guess},
-        success: function(data) {
-            if(data.answer=='++++' || data.attempts==0) {
-                play_again(data.answer=='++++');
+    if(/([1-6]){4}/.test(guess) {
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: '/check',
+            data: {guess: guess},
+            success: function(data) {
+                if(data.answer=='++++' || data.attempts==0) {
+                    play_again(data.answer=='++++');
+                }
+                $('#answer-render').empty();
+                $('#answer-render').append('The answer is: '+data.answer);
+                $('#attempts-render').empty();
+                $('#attempts-render').append(data.attempts);
             }
-            $('#answer-render').empty();
-            $('#answer-render').append('The answer is: '+data.answer);
-            $('#attempts-render').empty();
-            $('#attempts-render').append(data.attempts);
-        }
-    });
+        });
+    }
+    else {
+        $('#answer-render').empty();
+        $('#answer-render').append('Please enter only 4 numbers from 1 to 6 (e.g. 1234)');
+    }
 }
 
 var play_again = function (win) {
