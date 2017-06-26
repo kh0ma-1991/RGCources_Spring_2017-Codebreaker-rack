@@ -59,6 +59,7 @@ var set_attempts = function(attempts_var){
             $('#guess').bind('keypress keydown keyup', function(e){
                 if(e.keyCode == 13) { e.preventDefault(); }
             });
+            $('#guess').focus(function() { $(this).val('') });
         }
     });
 };
