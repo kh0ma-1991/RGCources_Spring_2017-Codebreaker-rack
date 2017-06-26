@@ -66,7 +66,7 @@ var set_attempts = function(attempts_var){
 
 var check_guess = function () {
     var guess = $('#guess').val();
-    if(/([1-6]){4}/.test(guess) {
+    if(/([1-6]){4}/.test(guess)) {
         $.ajax({
             type: "GET",
             dataType: "json",
