@@ -1,13 +1,9 @@
 GIT
-  remote: https://github.com/kh0ma/RGCources_Spring_2017-Codebreaker
-  revision: 608900654310ec9bf9577eb9d14d28c359db748e
+  remote: https://github.com/kh0ma-1991/RGCources_Spring_2017-Codebreaker
+  revision: 384537d95da53cf9bd3678c49fbf30fa5c73c37d
+  branch: for_rack
   specs:
     codebreaker (0.1.0)
-
-PATH
-  remote: .
-  specs:
-    codebreaker_rack_app (0.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -35,10 +31,12 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 1.15)
   codebreaker!
-  codebreaker_rack_app!
   rack
   rake (~> 10.0)
   rspec (~> 3.0)
+
+RUBY VERSION
+   ruby 2.4.0p0
 
 BUNDLED WITH
    1.15.1
