@@ -89,9 +89,14 @@ body {
     outline: none;
     width: 100%;
 }
-.terminal form, .playing form {
+.terminal form {
     display: inline-block;
     width: 50%;
+}
+
+.playing form {
+    display: inline-block;
+    width: 35%;
 }
 
 form {
@@ -108,4 +113,12 @@ form {
     color:#1ff042;
     cursor:pointer;
     text-decoration: none;
+}
+
+.badge-hint {
+    position: relative;
+    -moz-transform: translate(-10%, -70%); /* For Firefox */
+    -ms-transform: translate(-10%, -70%); /* for IE */
+    -webkit-transform: translate(-10%, -70%); /* For Safari, Chrome, iOS */
+    -o-transform: translate(-10%, -70%); /* For Opera */
 }

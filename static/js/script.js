@@ -46,16 +46,17 @@ var start_game = function(){
     });
 };
 
-var set_attempts = function(attempts_var){
+var initialize_game = function(attempts_var, hints_var){
     $.ajax({
         type: "POST",
         url: '/playing',
-        data: {attempts: attempts_var},
+        data: {attempts: attempts_var,
+               hints: hints_var},
         success: function(data) {
             console.log(data)
             $('.terminal-div').empty();
             $('.terminal-div').append(data);
-            $('#check-code').click(check_guess);
+            //$('#check-code').click(check_guess);
             $('#guess').bind('keypress keydown keyup', function(e){
                 if(e.keyCode == 13) { e.preventDefault(); }
             });
@@ -87,6 +88,20 @@ var check_guess = function () {
         $('#answer-render').empty();
         $('#answer-render').append('Please enter only 4 numbers from 1 to 6 (e.g. 1234)');
     }
+}
+
+var hint = function () {
+    $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: '/hint',
+        success: function(data) {
+            $('#answer-render').empty();
+            $('#answer-render').append('Your hint is: ' + data.hint);
+            $('#hints-render').empty();
+            $('#hints-render').append(data.hints);
+        }
+    });
 }
 
 var play_again = function (win) {
