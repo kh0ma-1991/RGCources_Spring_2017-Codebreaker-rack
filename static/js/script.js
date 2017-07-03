@@ -91,6 +91,11 @@ var check_guess = function () {
 }
 
 var hint = function () {
+    if($('#hints-render').html() == 0) {
+        $('#answer-render').empty();
+        $('#answer-render').append('Sorry, but you don\'t have hints enough :(');
+        return;
+    }
     $.ajax({
         type: "GET",
         dataType: "json",

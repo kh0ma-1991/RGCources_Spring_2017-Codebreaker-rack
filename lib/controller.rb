@@ -3,6 +3,8 @@ require 'base64'
 require 'yaml'
 require 'codebreaker'
 require 'json'
+require_relative 'helpers/session_helper'
+require_relative 'models/session'
 
 module CodebreakerRackApp
   class Controller
@@ -23,23 +25,29 @@ module CodebreakerRackApp
           game.attempts = attempts.to_i
           game.hints = hints.to_i
           game.start
-          response.set_cookie('game', Base64.encode64(YAML.dump(game)))
+          session_id = SessionHelper.next_id
+          SessionHelper.save(Session.new(session_id, game))
+          response.set_cookie('session_id', Base64.encode64(session_id.to_s))
           response
         when '/check'
           response = Rack::Response.new
-          game = YAML.load(Base64.decode64(@request.cookies["game"]))
+          session_id = Base64.decode64(@request.cookies['session_id']).to_i
+          game = SessionHelper.session(session_id).game
           guess = @request.params['guess']
           answer = game.check_code(guess)
           attempts = game.attempts
-          response.set_cookie('game', Base64.encode64(YAML.dump(game)))
+          SessionHelper.save(Session.new(session_id, game))
+          response.set_cookie('session_id', Base64.encode64(session_id.to_s))
           response.write(JSON.generate({answer: answer, attempts: attempts}))
           response
         when '/hint'
           response = Rack::Response.new
-          game = YAML.load(Base64.decode64(@request.cookies["game"]))
+          session_id = Base64.decode64(@request.cookies['session_id']).to_i
+          game = SessionHelper.session(session_id).game
           hint = game.hint
           hints = game.hints
-          response.set_cookie('game', Base64.encode64(YAML.dump(game)))
+          SessionHelper.save(Session.new(session_id, game))
+          response.set_cookie('session_id', Base64.encode64(session_id.to_s))
           response.write(JSON.generate({hint: hint, hints: hints}))
           response
         when '/play_again'

@@ -1,5 +1,6 @@
 require "bundler/setup"
-require "codebreaker_rack_app"
+require "helpers/session_helper"
+require "models/session.rb"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

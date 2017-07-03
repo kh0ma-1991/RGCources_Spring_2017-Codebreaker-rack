@@ -1,12 +1,11 @@
 GIT
   remote: https://github.com/kh0ma-1991/RGCources_Spring_2017-Codebreaker
-  revision: 384537d95da53cf9bd3678c49fbf30fa5c73c37d
+  revision: aed7ad0261f5ab622a1277072c208b5e43572fbc
   branch: for_rack
   specs:
     codebreaker (0.1.0)
 
 GEM
-  remote: https://rubygems.org/
   specs:
     diff-lcs (1.3)
     rack (2.0.3)
