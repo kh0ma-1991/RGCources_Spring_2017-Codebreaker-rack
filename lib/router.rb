@@ -2,6 +2,8 @@ module CodebreakerRackApp
   class Router
     def initialize(request)
       @request = request
+      @session_helper = SessionHelper.new
+      @score_helper = ScoreHelper.new
     end
 
     def index
@@ -20,8 +22,8 @@ module CodebreakerRackApp
       game.attempts = attempts.to_i
       game.hints = hints.to_i
       game.start
-      session_id = SessionHelper.next_id
-      SessionHelper.save(Session.new(session_id, game))
+      session_id = @session_helper.next_id
+      @session_helper.save(Session.new(session_id, game))
       response.set_cookie('session_id', Base64.encode64(session_id.to_s))
       response
     end
@@ -29,11 +31,12 @@ module CodebreakerRackApp
     def check
       response = Rack::Response.new
       session_id = Base64.decode64(@request.cookies['session_id']).to_i
-      game = SessionHelper.session(session_id).game
+      session = @session_helper.session(session_id)
+      game = session.game
       guess = @request.params['guess']
       answer = game.check_code(guess)
       attempts = game.attempts
-      SessionHelper.save(Session.new(session_id, game))
+      @session_helper.save(session.get_attempt)
       response.set_cookie('session_id', Base64.encode64(session_id.to_s))
       response.write(JSON.generate({answer: answer, attempts: attempts}))
       response
@@ -42,12 +45,26 @@ module CodebreakerRackApp
     def hint
       response = Rack::Response.new
       session_id = Base64.decode64(@request.cookies['session_id']).to_i
-      game = SessionHelper.session(session_id).game
+      session = @session_helper.session(session_id)
+      game = session.game
       hint = game.hint
       hints = game.hints
-      SessionHelper.save(Session.new(session_id, game))
+      @session_helper.save(session.get_hint)
       response.set_cookie('session_id', Base64.encode64(session_id.to_s))
       response.write(JSON.generate({hint: hint, hints: hints}))
+      response
+    end
+
+    def score
+      response = Rack::Response.new
+      if(@request.post?)
+        name = @request.params['name']
+        session_id = Base64.decode64(@request.cookies['session_id']).to_i
+        score = Score.new(name, session_id)
+        @score_helper.save(score)
+      else
+        response.write(JSON.generate(@score_helper.all))
+      end
       response
     end
 

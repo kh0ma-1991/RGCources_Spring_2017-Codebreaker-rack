@@ -5,6 +5,8 @@ require 'codebreaker'
 require 'json'
 require_relative 'helpers/session_helper'
 require_relative 'models/session'
+require_relative 'helpers/score_helper'
+require_relative 'models/score'
 require_relative 'router'
 
 module CodebreakerRackApp
@@ -22,6 +24,7 @@ module CodebreakerRackApp
         when '/check'       then @router.check
         when '/hint'        then @router.hint
         when '/play_again'  then @router.play_again
+        when '/score'       then @router.score
         else                     @router.not_found
       end
     end

@@ -24,7 +24,10 @@ input.keyup(function(e){
         console.log(command);
         render(command);
         if(command == '/start') {
-            start_game()
+            start_game();
+        }
+        else if(command == '/score') {
+            score();
         }
         else {
             render(bad_command);
@@ -117,7 +120,57 @@ var play_again = function (win) {
             $('.terminal-div').empty();
             $('.terminal-div').append(data);
             var message = win? 'Congratulations. You win ;)' : 'Sorry. But you lose :('
-            $('#game-message').append(message)
+            if(win) {
+                $('#name-score-div').removeClass('hidden');
+            }
+            $('#game-message').append(message);
+        }
+    });
+}
+
+var save_score = function () {
+    var name = $('#name-score').val();
+    if(name.length > 0) {
+        $.ajax({
+            type: "POST",
+            url: '/score',
+            data: {name: name},
+            success: function(data) {
+                $('#name-score-div').addClass('hidden');
+            }
+        });
+    }
+}
+
+var score = function () {
+    $.ajax({
+        type: "GET",
+        url: '/score',
+        success: function(data) {
+            $('.terminal-div').empty();
+            $('.terminal-div')
+                .append('<div class="row score">' +
+                            '<h4 style="color:#1ff042">Scores</h4>' +
+                            '<table class="table responsive table-score nowrap" id="scores-table" width="100%">' +
+                            '</table>' +
+                        '</div>');
+            $('#scores-table').DataTable( {
+                data: $.parseJSON(data),
+                columns: [
+                    { data: "name",
+                      title: 'Name'},
+                    { data: "score",
+                      title: 'Score'},
+                    { data: "date",
+                      title: 'Date'}
+                ],
+                "ordering": false,
+                "info":     false,
+                "searching": false,
+                "lengthChange": false,
+                "pageLength": 7,
+                responsive: true
+            } );
         }
     });
 }

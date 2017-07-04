@@ -5,6 +5,7 @@
   <link rel="shortcut icon" href="/icons/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="/css/style.css" type="text/css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.15/b-1.3.1/b-colvis-1.3.1/cr-1.3.3/r-2.1.1/datatables.min.css"/>
 </head>
 <body style="background-color: #353535;">
   <div class="container">
@@ -21,6 +22,7 @@
         <div class="terminal">
           <p>Hello. This is the web interface for codebreaker gem.</p>
           <p>Pull request available <a class='start_from_index' href="https://github.com/kh0ma-1991/RGCources_Spring_2017-Codebreaker-rack/pull/1/files">here</a></p>
+          <p>If you want to see scores press <a class='start_from_index' onclick="score()">'/score'</a></p>
           <p>If you want to play press <a class='start_from_index' onclick="start_game()">'/start'</a></p>
           <span id="terminal-bash">codebreaker:$ </span><form><input type="text" id="main-input"></form>
         </div>
@@ -37,6 +39,7 @@
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.15/b-1.3.1/b-colvis-1.3.1/cr-1.3.3/r-2.1.1/datatables.min.js"></script>
   <script type="text/javascript" src="/js/script.js"></script>
 </body>
 </html>

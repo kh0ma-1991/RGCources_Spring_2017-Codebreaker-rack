@@ -122,3 +122,39 @@ form {
     -webkit-transform: translate(-10%, -70%); /* For Safari, Chrome, iOS */
     -o-transform: translate(-10%, -70%); /* For Opera */
 }
+
+.save-score, .save-score input {
+    font-size: 25px;
+}
+
+table {
+    font-family: 'AndaleMono', monospace;
+    color: #1ff042;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    text-align: left;
+    padding: 8px;
+}
+
+tr {
+    border: none;
+}
+.score {
+    padding: 10px;
+    font-family: 'AndaleMono', monospace;
+    color:#1ff042;
+}
+
+.table-score, #scores-table tbody tr {
+    background-color: inherit;
+    border: none;
+}
+
+table.dataTable thead td,
+table.dataTable tfoot td,
+table.dataTable.no-footer {
+    border-bottom: none;
+}
