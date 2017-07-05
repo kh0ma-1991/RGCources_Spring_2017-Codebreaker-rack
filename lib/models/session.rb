@@ -2,7 +2,7 @@ module CodebreakerRackApp
   class Session
     attr_accessor :session_id, :game, :hint_counter, :attempts_counter
 
-    def initialize (session_id, game)
+    def initialize(session_id, game)
       @session_id = session_id
       @game = game
       @hint_counter = 0
@@ -20,3 +20,4 @@ module CodebreakerRackApp
     end
   end
 end
+

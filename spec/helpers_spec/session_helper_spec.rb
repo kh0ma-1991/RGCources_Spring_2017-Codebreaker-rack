@@ -49,7 +49,6 @@ module CodebreakerRackApp
             expect(YAML).to receive(:dump).with([first_session])
             subject.save(first_session)
           end
-
         end
         context 'all has elements' do
           before(:each) do
@@ -57,14 +56,16 @@ module CodebreakerRackApp
           end
 
           it 'call File.write array that contain pushed session' do
-            expect(YAML).to receive(:dump).with(sessions.push fourth_session)
+            expect(YAML).to receive(:dump)
+              .with(sessions.push (fourth_session))
             subject.save(fourth_session)
           end
 
           it 'should update by given item' do
             third_session.game = 'third_updated'
             sessions.delete_if { |el| el.session_id == third_session.session_id }
-            expect(YAML).to receive(:dump).with(sessions.push third_session)
+            expect(YAML).to receive(:dump)
+              .with(sessions.push (third_session))
             subject.save(third_session)
           end
         end

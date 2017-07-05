@@ -1,12 +1,12 @@
 module CodebreakerRackApp
   class ScoreHelper
-    @@scores_path = File.expand_path("../../../data/scores.yml", __FILE__)
+    @@scores_path = File.expand_path('../../../data/scores.yml', __FILE__)
 
     def initialize
       @sessions_helper = SessionHelper.new
     end
 
-    def get_score (session_id)
+    def get_score(session_id)
       session = @sessions_helper.session(session_id)
       used_attempts = session.attempts_counter
       used_hints = session.hint_counter
@@ -16,7 +16,7 @@ module CodebreakerRackApp
       score_amount
     end
 
-    def save (score)
+    def save(score)
       scores = all || []
       scores.push score
       File.write(@@scores_path,YAML.dump(scores))

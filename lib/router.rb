@@ -16,12 +16,9 @@ module CodebreakerRackApp
 
     def playing
       response = Rack::Response.new(render('playing.erb'))
-      response.set_header("attempts", attempts) if @request.post?
-      response.set_header("hints", hints) if @request.post?
-      game = Codebreaker::Game.new
-      game.attempts = attempts.to_i
-      game.hints = hints.to_i
-      game.start
+      response.set_header('attempts', attempts) if @request.post?
+      response.set_header('hints', hints) if @request.post?
+      game = create_game(attempts, hints)
       session_id = @session_helper.next_id
       @session_helper.save(Session.new(session_id, game))
       response.set_cookie('session_id', Base64.encode64(session_id.to_s))
@@ -38,7 +35,8 @@ module CodebreakerRackApp
       attempts = game.attempts
       @session_helper.save(session.get_attempt)
       response.set_cookie('session_id', Base64.encode64(session_id.to_s))
-      response.write(JSON.generate({answer: answer, attempts: attempts}))
+      response.write(JSON.generate(answer: answer,
+                                   attempts: attempts))
       response
     end
 
@@ -51,13 +49,13 @@ module CodebreakerRackApp
       hints = game.hints
       @session_helper.save(session.get_hint)
       response.set_cookie('session_id', Base64.encode64(session_id.to_s))
-      response.write(JSON.generate({hint: hint, hints: hints}))
+      response.write(JSON.generate(hint: hint, hints: hints))
       response
     end
 
     def score
       response = Rack::Response.new
-      if(@request.post?)
+      if @request.post?
         name = @request.params['name']
         session_id = Base64.decode64(@request.cookies['session_id']).to_i
         score = Score.new(name, session_id)
@@ -77,6 +75,14 @@ module CodebreakerRackApp
     end
 
     private
+
+    def create_game(attempts, hints)
+      game = Codebreaker::Game.new
+      game.attempts = attempts.to_i
+      game.hints = hints.to_i
+      game.start
+      game
+    end
 
     def render(template)
       path = File.expand_path("../../views/#{template}", __FILE__)

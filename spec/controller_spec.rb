@@ -1,10 +1,9 @@
 require 'spec_helper'
-# require "test/unit"
-require "rack/test"
+require 'rack/test'
 
 module CodebreakerRackApp
   class ControllerSpec
-    OUTER_APP = Rack::Builder.parse_file("config.ru").first
+    OUTER_APP = Rack::Builder.parse_file('config.ru').first
 
     RSpec.describe Controller do
       include Rack::Test::Methods
@@ -28,7 +27,7 @@ module CodebreakerRackApp
         end
         it '/check' do
           get '/playing'
-          get '/check', {guess: '1234'}
+          get '/check', guess: '1234'
           expect(last_response.status).to eq(200)
         end
         it '/hint' do
