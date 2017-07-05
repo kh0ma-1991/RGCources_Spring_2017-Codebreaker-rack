@@ -2,7 +2,7 @@ require 'yaml'
 
 module CodebreakerRackApp
   class SessionHelper
-    @@sessions_path = File.expand_path('../../../data/sessions.yml', __FILE__)
+    @@sessions_path = File.expand_path('../../../sessions.yml', __FILE__)
 
     def next_id
       return 1 unless all
