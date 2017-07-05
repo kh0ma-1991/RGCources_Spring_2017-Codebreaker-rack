@@ -3,6 +3,7 @@ require "helpers/session_helper"
 require "models/session.rb"
 require "helpers/score_helper"
 require "models/score.rb"
+require "controller.rb"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

@@ -2,11 +2,11 @@ require 'yaml'
 
 module CodebreakerRackApp
   class SessionHelper
-    @@session_id = 0
     @@sessions_path = File.expand_path("../../../data/sessions.yml", __FILE__)
 
     def next_id
-      @@session_id += 1
+      return 1 unless all
+      all.last.session_id + 1
     end
 
     def session(session_id)

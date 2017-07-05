@@ -14,12 +14,13 @@ module CodebreakerRackApp
 
       describe '#next_id' do
         it 'return "1" from initial' do
+          allow(subject).to receive(:all).and_return nil
           expect(subject.next_id).to eq(1)
         end
 
-        it 'return "111" when session_id = 110' do
-          SessionHelper.class_variable_set :@@session_id, 110
-          expect(subject.next_id).to eq(111)
+        it 'return "5" when last id was 4' do
+          allow(subject).to receive(:all).and_return [fourth_session]
+          expect(subject.next_id).to eq(5)
         end
       end
 

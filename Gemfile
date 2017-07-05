@@ -7,4 +7,5 @@ group :development do
   gem "bundler", "~> 1.15"
   gem "rake", "~> 10.0"
   gem "rspec", "~> 3.0"
+  gem "rack-test", require: "rack/test"
 end
