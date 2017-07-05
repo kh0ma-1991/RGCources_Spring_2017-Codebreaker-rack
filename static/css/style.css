@@ -1,7 +1,5 @@
 body {
-    background-color: #3d3d3d;
-    background-position: center center;
-    background-repeat: no-repeat;
+    background: #3d3d3d no-repeat center center;
 }
 
 .outside-terminal {
@@ -22,12 +20,8 @@ body {
 }
 
 .terminal-div {
-    background-color: black;
-    background-position: center center;
-    background-repeat: no-repeat;
-    border-style: double;
-    border-width: 15px;
-    border-color: #004e11;
+    background: black no-repeat center center;
+    border: 15px double #004e11;
     padding: 10px 20px 10px 20px;
     height: 460px;
 }
@@ -76,10 +70,8 @@ body {
 .terminal p, .terminal span, .terminal input {
     color: #1ff042;
     margin: 0;
-    /*font-size: 1.5vw;*/
     font-family: 'AndaleMono', monospace;
     text-shadow: 0px 0px 4px #1ff042;
-    /*white-space: pre;*/
 }
 .terminal input[type='text'], .playing input[type='text'] {
     background-color: transparent;
@@ -127,34 +119,31 @@ form {
     font-size: 25px;
 }
 
-table {
-    font-family: 'AndaleMono', monospace;
-    color: #1ff042;
-    border-collapse: collapse;
-    width: 100%;
-}
-
-td, th {
-    text-align: left;
-    padding: 8px;
-}
-
-tr {
-    border: none;
-}
 .score {
     padding: 10px;
     font-family: 'AndaleMono', monospace;
     color:#1ff042;
+    text-shadow: 0px 0px 4px #1ff042;
 }
 
-.table-score, #scores-table tbody tr {
-    background-color: inherit;
-    border: none;
+.pagination>li>a, .pagination>li>span {
+    background-color: inherit !important;
+    border: none !important;
 }
 
-table.dataTable thead td,
-table.dataTable tfoot td,
-table.dataTable.no-footer {
-    border-bottom: none;
+.pagination>.disabled>a, .pagination>.disabled>a:focus, .pagination>.disabled>a:hover, .pagination>.disabled>span, .pagination>.disabled>span:focus, .pagination>.disabled>span:hover {
+    background-color: inherit !important;
+    color: #1ff042 !important;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    color: #1ff042 !important;
+}
+
+.pagination>li>a, .pagination>li>span {
+    color: #1ff042 !important;
+}
+
+th, td {
+    border-color: #1ff042 !important;
 }
