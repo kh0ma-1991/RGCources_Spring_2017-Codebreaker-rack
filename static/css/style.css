@@ -1,0 +1,149 @@
+body {
+    background: #3d3d3d no-repeat center center;
+}
+
+.outside-terminal {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    color: antiquewhite;
+    font-size: 25px;
+}
+
+.outside-terminal a {
+    color: antiquewhite;
+    text-decoration: none ;
+}
+.outside-terminal a:hover {
+    color:white;
+    text-decoration:none;
+    cursor:pointer;
+}
+
+.terminal-div {
+    background: black no-repeat center center;
+    border: 15px double #004e11;
+    padding: 10px 20px 10px 20px;
+    height: 460px;
+}
+
+.attempts, .play_again {
+    color: #1ff042;
+    font-family: 'AndaleMono', monospace;
+    text-shadow: 0px 0px 4px #1ff042;
+    margin: 0;
+    padding-left: 25px;
+}
+
+.attempts a, .playing a, .play_again a {
+    color: #1ff042;
+    text-decoration: underline;
+    text-decoration-style: dotted ;
+    text-decoration-color: #1ff042;
+    font-size: 25px;
+    padding-left: 10px;
+    padding-top: 25px;
+}
+.attempts a:hover, .playing a:hover, .play_again a:hover {
+    color:#1ff042;
+    cursor:pointer;
+    text-decoration: none;
+}
+
+.playing, .playing input {
+    color: #1ff042;
+    font-family: 'AndaleMono', monospace;
+    text-shadow: 0px 0px 4px #1ff042;
+    margin: 0;
+    padding-left: 25px;
+    font-size: 25px;
+}
+
+.playing input {
+    margin-top: 80px;
+}
+
+.terminal {
+    position: absolute;
+    bottom: 0;
+    border: medium;
+}
+.terminal p, .terminal span, .terminal input {
+    color: #1ff042;
+    margin: 0;
+    font-family: 'AndaleMono', monospace;
+    text-shadow: 0px 0px 4px #1ff042;
+}
+.terminal input[type='text'], .playing input[type='text'] {
+    background-color: transparent;
+    border: 0;
+}
+.terminal input[type='text']:focus, .playing input[type='text']:focus {
+    outline: none;
+    width: 100%;
+}
+.terminal form {
+    display: inline-block;
+    width: 50%;
+}
+
+.playing form {
+    display: inline-block;
+    width: 35%;
+}
+
+form {
+    display: inline-block;
+}
+
+.start_from_index {
+    color: #1ff042;
+    text-decoration: underline;
+    text-decoration-style: dotted ;
+    text-decoration-color: #1ff042;
+}
+.start_from_index:hover {
+    color:#1ff042;
+    cursor:pointer;
+    text-decoration: none;
+}
+
+.badge-hint {
+    position: relative;
+    -moz-transform: translate(-10%, -70%); /* For Firefox */
+    -ms-transform: translate(-10%, -70%); /* for IE */
+    -webkit-transform: translate(-10%, -70%); /* For Safari, Chrome, iOS */
+    -o-transform: translate(-10%, -70%); /* For Opera */
+}
+
+.save-score, .save-score input {
+    font-size: 25px;
+}
+
+.score {
+    padding: 10px;
+    font-family: 'AndaleMono', monospace;
+    color:#1ff042;
+    text-shadow: 0px 0px 4px #1ff042;
+}
+
+.pagination>li>a, .pagination>li>span {
+    background-color: inherit !important;
+    border: none !important;
+}
+
+.pagination>.disabled>a, .pagination>.disabled>a:focus, .pagination>.disabled>a:hover, .pagination>.disabled>span, .pagination>.disabled>span:focus, .pagination>.disabled>span:hover {
+    background-color: inherit !important;
+    color: #1ff042 !important;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    color: #1ff042 !important;
+}
+
+.pagination>li>a, .pagination>li>span {
+    color: #1ff042 !important;
+}
+
+th, td {
+    border-color: #1ff042 !important;
+}

@@ -1,0 +1,15 @@
+<div class="row play_again">
+  <h1 id="game-message"></h1>
+  <h1>Would you like to play again?</h1>
+  <a onclick="start_game()">Yes</a>
+  <a href="/">No</a>
+  <div id='name-score-div' class="hidden terminal save-score">
+    <!--<img class="img-responsive" src="/images/score.png">-->
+    <p>To save your score please fill out the field below :)</p>
+    <span id="terminal-bash">name:$ </span>
+    <form>
+      <input type="text" id="name-score" required>
+    </form>
+    <a id="save-score" onclick="save_score()">save</a>
+  </div>
+</div>

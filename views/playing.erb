@@ -1,0 +1,14 @@
+<div class="row playing">
+  <h3 id="answer-render">Secret code was generated successfully.</h3>
+  <h3>You have <span id="attempts-render">'<%= attempts %>'</span> attempts to break it.</h3>
+  <span id="terminal-bash">guess:$ </span>
+  <form>
+    <input type="text" id="guess" placeholder="****" maxlength="4">
+  </form>
+  <a id="check-code_link" onclick="check_guess()">check</a>
+  <a id="hint_link" onclick="hint()">hint
+    <span id="hints-render" class="badge badge-hint" style="background-color: #1ff042; color: black">
+      <%= hints %>
+    </span>
+  </a>
+</div>
