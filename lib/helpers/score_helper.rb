@@ -1,6 +1,6 @@
 module CodebreakerRackApp
   class ScoreHelper
-    @@scores_path = File.expand_path('../../../data/scores.yml', __FILE__)
+    @@scores_path = File.expand_path('../../../scores.yml', __FILE__)
 
     def initialize
       @sessions_helper = SessionHelper.new
