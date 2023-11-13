@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 gem 'rack'
 gem 'codebreaker', git: 'https://github.com/kh0ma-1991/RGCources_Spring_2017-Codebreaker', branch: 'for_rack'
-ruby '3.0.6'
+ruby '3.2.2'
 
 group :development do
   gem "bundler", "~> 1.15"
