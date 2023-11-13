@@ -21,7 +21,7 @@ module CodebreakerRackApp
     end
 
     def all
-      YAML.load(File.read(@@sessions_path)) if File.readable? @@sessions_path
+      YAML.load(File.read(@@sessions_path), permitted_classes: [Session, Codebreaker::Game, CodebreakerRackApp::Score, Time]) if File.readable? @@sessions_path
     end
   end
 end
